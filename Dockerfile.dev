@@ -3,15 +3,9 @@ From node:16-alpine
 Workdir '/app'
 
 Copy package.json .
-
-# To Fix Permissions for Packages
-RUN npm config set unsafe-perm true
-
 Run npm install
 
 Copy . .
 
-RUN chown -R node /app/node_modules
-USER node
 
 CMD ["npm", "run", "start"]
